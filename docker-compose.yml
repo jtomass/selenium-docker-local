@@ -1,0 +1,42 @@
+version: '2.1'
+services:
+  firefox:
+    image: selenium/node-firefox:3.10.0-argon
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+      DISPLAY: ":99.0"
+    networks:
+      selenium3:
+        aliases:
+          - selenium
+
+  chrome:
+    image: selenium/node-chrome:3.11.0-bismuth
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - hub
+    environment:
+      HUB_HOST: hub
+      DISPLAY: ":99.0"
+    networks:
+      selenium3:
+        aliases:
+          - selenium
+
+  hub:
+    image: selenium/hub:3.11.0-bismuth
+    ports:
+      - "4444:4444"
+    networks:
+      selenium3:
+        aliases:
+          - selenium
+
+networks:
+    selenium3:
+      driver: bridge
