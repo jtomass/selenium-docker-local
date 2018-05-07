@@ -2,8 +2,6 @@ version: '2.1'
 services:
   firefox:
     image: selenium/node-firefox:3.10.0-argon
-    volumes:
-      - /dev/shm:/dev/shm
     depends_on:
       - hub
     environment:
@@ -16,8 +14,6 @@ services:
 
   chrome:
     image: selenium/node-chrome:3.11.0-bismuth
-    volumes:
-      - /dev/shm:/dev/shm
     depends_on:
       - hub
     environment:
