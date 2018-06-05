@@ -1,7 +1,8 @@
 version: '2.1'
 services:
   firefox:
-    image: selenium/node-firefox:3.10.0-argon
+    image: selenium/node-firefox:3.10
+    shm_size: 500M
     depends_on:
       - hub
     environment:
@@ -13,7 +14,8 @@ services:
           - selenium
 
   chrome:
-    image: selenium/node-chrome:3.11.0-bismuth
+    image: selenium/node-chrome:3.11
+    shm_size: 500M
     depends_on:
       - hub
     environment:
@@ -25,7 +27,7 @@ services:
           - selenium
 
   hub:
-    image: selenium/hub:3.11.0-bismuth
+    image: selenium/hub:3.12
     ports:
       - "4444:4444"
     networks:
